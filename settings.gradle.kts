@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "KikiTaxi"
 include(":app")
- 
+include(":kiki-lib")
