@@ -1,9 +1,15 @@
 package com.araa.kiki_lib
 
-import com.araa.kiki_lib.model.Offer
 
 fun main() {
-    val five = 5
-    if (five in 1..10)
-    print(calculateDeliveryCost(100.00, 10.0, 100.0, Offer.OFR003.name ))
+    print("Enter Base Price: ")
+    val basePrice: Double = readlnOrNull()?.toDouble() ?: 0.0
+    print("Enter Weight: ")
+    val weight: Double = readlnOrNull()?.toDouble() ?: 0.0
+    print("Enter Distance: ")
+    val distance: Double = readlnOrNull()?.toDouble() ?: 0.0
+    print("Enter Coupon Code: ")
+    val discountCode: String = readln()
+
+    print(calculateDeliveryCost(basePrice, weight, distance, discountCode ))
 }
