@@ -38,9 +38,7 @@ fun main() {
 //    listOfPackages.add(ItemPackage("PKG004", 110.0, 60.0, 125.0, 23.0))
 //    listOfPackages.add(ItemPackage("PKG005", 155.0, 95.0, 125.0, 23.0))
 
-    findCombinations(listOfPackages, MAX_CAPACITY).forEach{
-        println(it)
-    }
+    val combinations = findCombinations(listOfPackages, MAX_CAPACITY)
 
 
 
