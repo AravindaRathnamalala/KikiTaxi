@@ -6,17 +6,14 @@ import com.araa.kiki_lib.model.Offer
 
 
 fun calculateDeliveryCost(
-    basePrice: Double, weight: Double, distance: Double, discountCode: String = ""
+    basePrice: Double, weight: Double, distance: Double
 ): Double {
-    val deliveryCharge = basePrice + weight * WEIGHT_CONST + distance * DISTANCE_CONST
-    return deliveryCharge - getDiscountedPrice(
-        deliveryCharge, discountCode, weight, distance
-    )
+    return basePrice + weight * WEIGHT_CONST + distance * DISTANCE_CONST
 }
 
 fun getDiscountedPrice(
     deliveryFee: Double,
-    discountCode: String,
+    discountCode: String = "",
     weight: Double,
     distance: Double
 ): Double {
