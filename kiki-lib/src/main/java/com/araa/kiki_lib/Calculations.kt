@@ -4,6 +4,7 @@ import com.araa.kiki_lib.Constants.Companion.DISTANCE_CONST
 import com.araa.kiki_lib.Constants.Companion.WEIGHT_CONST
 import com.araa.kiki_lib.model.ItemPackage
 import com.araa.kiki_lib.model.Offer
+import java.text.DecimalFormat
 
 fun calculateDeliveryCost(
     basePrice: Double, weight: Double, distance: Double
@@ -36,8 +37,8 @@ fun getDiscountedPrice(
     return 0.0
 }
 
-fun getDeliveryTime(list: List<ItemPackage>, maxSpeed: Int): Double {
-    return list.sortedByDescending { it.distance }[0].distance / maxSpeed
+fun getDeliveryTime(distance: Double, maxSpeed: Int): Double {
+    return ((distance / maxSpeed) * 100).toInt() / 100.0
 }
 
 fun findCombinations(itemPackages: List<ItemPackage>, maxCapacity: Int): List<List<ItemPackage>> {
@@ -82,6 +83,7 @@ fun removeSubListsWithDuplicateValues(inputArray: List<List<ItemPackage>>): List
     result.removeLast()
     return result
 }
+
 
 
 
