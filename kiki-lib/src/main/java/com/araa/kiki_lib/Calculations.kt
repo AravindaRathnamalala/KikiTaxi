@@ -57,11 +57,7 @@ fun findCombinations(itemPackages: List<ItemPackage>, maxCapacity: Int): List<Li
         // Exclude the weight at the current index
         generateCombinations(index + 1, currentCombination, currentWeight)
     }
-
     generateCombinations(0, emptyList(), 0.0)
-//    result.sortedByDescending { it. }
-//    return removeSublistsWithDuplicateValues(result.sortedByDescending { it.sum() })
-//    return result
 
     return removeSubListsWithDuplicateValues(result.sortByDecendingOrder())
 }
