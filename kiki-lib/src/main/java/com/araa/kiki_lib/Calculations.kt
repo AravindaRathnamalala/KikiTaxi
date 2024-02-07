@@ -4,6 +4,7 @@ import com.araa.kiki_lib.Constants.Companion.DISTANCE_CONST
 import com.araa.kiki_lib.Constants.Companion.WEIGHT_CONST
 import com.araa.kiki_lib.model.ItemPackage
 import com.araa.kiki_lib.model.Offer
+import com.araa.kiki_lib.model.Vehicle
 import java.text.DecimalFormat
 
 fun calculateDeliveryCost(
@@ -84,7 +85,23 @@ fun removeSubListsWithDuplicateValues(inputArray: List<List<ItemPackage>>): List
     return result
 }
 
-
+fun getPackageDetailsWithDeliveryTime(
+    combinations: List<List<ItemPackage>>,
+    listOfVehicles: List<Vehicle>
+) {
+    combinations.forEach {
+        val max = it.maxByOrNull { it.distance }?.distance
+        val availableVehicle = listOfVehicles.minByOrNull { it.availability }
+        it.forEach {
+            if (availableVehicle != null) {
+                it.deliveryTime += availableVehicle.availability
+            }
+        }
+        listOfVehicles.minByOrNull { it.availability }?.availability =
+            listOfVehicles.minByOrNull { it.availability }?.availability!! +
+                    max?.let { it1 -> getDeliveryTime(it1, Constants.MAX_SPEED) }!! * 2
+    }
+}
 
 
 
