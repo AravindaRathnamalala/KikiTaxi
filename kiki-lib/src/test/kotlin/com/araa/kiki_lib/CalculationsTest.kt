@@ -10,7 +10,7 @@ import org.junit.Test
 
 class CalculationsTest {
 
-    private var listOfPackages = mutableListOf(
+    private val listOfPackages = mutableListOf(
         ItemPackage("PKG001", 50.0, 30.0, 125.0, 23.0, getDeliveryTime(30.0, MAX_SPEED)),
         ItemPackage("PKG002", 75.0, 125.0, 125.0, 23.0, getDeliveryTime(125.0, MAX_SPEED)),
         ItemPackage("PKG003", 175.0, 100.0, 125.0, 23.0, getDeliveryTime(100.0, MAX_SPEED)),
@@ -18,8 +18,7 @@ class CalculationsTest {
         ItemPackage("PKG005", 155.0, 95.0, 125.0, 23.0, getDeliveryTime(95.0, MAX_SPEED))
     )
 
-    private var vehicles = mutableListOf(Vehicle("VH001", 0.0), Vehicle("VH002", 0.0))
-
+    private val vehicles = mutableListOf(Vehicle("VH001", 0.0), Vehicle("VH002", 0.0))
 
     @Test
     fun `calculate delivery cost`() {
@@ -63,6 +62,7 @@ class CalculationsTest {
         val combinations = findCombinations(listOfPackages, MAX_CAPACITY)
         getPackageDetailsWithDeliveryTime(combinations, vehicles)
         combinations.forEach { itemPackages ->
+            println(itemPackages)
             itemPackages.forEach {
                 packages.add(it)
             }

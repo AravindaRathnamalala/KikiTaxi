@@ -12,11 +12,11 @@ fun List<List<ItemPackage>>.sortByDecendingOrder(): List<List<ItemPackage>> {
     // Sort the map by the sums of weights in descending order
     val sortedWeightSumsMap = weightSumsMap.toList().sortedByDescending { (_, value) -> value }.toMap()
     // Reconstruct the sorted 2D list
-    val sortedItemPackages2D = mutableListOf<List<ItemPackage>>()
+    val sortedItemPackages = mutableListOf<List<ItemPackage>>()
     sortedWeightSumsMap.forEach { (index, _) ->
-        sortedItemPackages2D.add(this[index])
+        sortedItemPackages.add(this[index])
     }
-    return sortedItemPackages2D
+    return sortedItemPackages
 }
 
 fun Double.roundToTwoDecimal() : Double{
