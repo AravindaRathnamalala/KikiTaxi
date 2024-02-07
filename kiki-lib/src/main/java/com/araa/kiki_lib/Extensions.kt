@@ -1,6 +1,7 @@
 package com.araa.kiki_lib
 
 import com.araa.kiki_lib.model.ItemPackage
+import java.text.DecimalFormat
 
 fun List<List<ItemPackage>>.sortByDecendingOrder(): List<List<ItemPackage>> {
     val weightSumsMap = mutableMapOf<Int, Double>()
@@ -16,4 +17,9 @@ fun List<List<ItemPackage>>.sortByDecendingOrder(): List<List<ItemPackage>> {
         sortedItemPackages2D.add(this[index])
     }
     return sortedItemPackages2D
+}
+
+fun Double.roundToTwoDecimal() : Double{
+    val df = DecimalFormat("#.##")
+    return df.format(this).toDouble()
 }

@@ -89,12 +89,12 @@ fun getPackageDetailsWithDeliveryTime(
     combinations: List<List<ItemPackage>>,
     listOfVehicles: List<Vehicle>
 ) {
-    combinations.forEach {
-        val max = it.maxByOrNull { it.distance }?.distance
+    combinations.forEach { packages ->
+        val max = packages.maxByOrNull { it.distance }?.distance
         val availableVehicle = listOfVehicles.minByOrNull { it.availability }
-        it.forEach {
+        packages.forEach {
             if (availableVehicle != null) {
-                it.deliveryTime += availableVehicle.availability
+                it.deliveryTime = (it.deliveryTime + availableVehicle.availability).roundToTwoDecimal()
             }
         }
         listOfVehicles.minByOrNull { it.availability }?.availability =
