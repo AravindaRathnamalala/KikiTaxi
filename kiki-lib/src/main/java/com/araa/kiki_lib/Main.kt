@@ -14,7 +14,7 @@ fun main() {
     var listOfPackages = mutableListOf<ItemPackage>()
     var vehicles = mutableListOf<Vehicle>()
     do {
-        println("Enter the number of packages:")
+        print("Enter the number of packages:")
         numberOfPackages = readlnOrNull()?.toIntOrNull() ?: -1
     } while (numberOfPackages <= 0)
     do {
@@ -28,10 +28,16 @@ fun main() {
 
 //    create package list based on numberOfPackages
     for (i in 1..numberOfPackages) {
-        print("Enter Weight: ")
-        val weight: Double = readlnOrNull()?.toDouble() ?: 0.0
-        print("Enter Distance: ")
-        val distance: Double = readlnOrNull()?.toDouble() ?: 0.0
+        var weight: Double
+        do {
+            print("Enter Weight: ")
+            weight = readlnOrNull()?.toDoubleOrNull() ?: -1.0
+        } while (weight <= 0)
+        var distance: Double
+        do {
+            print("Enter Distance: ")
+            distance = readlnOrNull()?.toDoubleOrNull() ?: -1.0
+        } while (distance <= 0)
         print("Enter Coupon Code: ")
         val discountCode: String = readln()
         val deliveryFee: Double = calculateDeliveryCost(BASE_DELIVERY_COST, weight, distance)
